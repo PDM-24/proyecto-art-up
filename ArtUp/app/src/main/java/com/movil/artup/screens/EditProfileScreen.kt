@@ -11,26 +11,25 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.rememberNavController
 import com.movil.artup.components.BottomNavigation
+import com.movil.artup.components.EditProfile
 import com.movil.artup.components.Exhibicion
 import com.movil.artup.components.HeaderProfile
-import com.movil.artup.components.UserProfileScreen
 
 @ExperimentalMaterial3Api
 @Composable
-fun ExhibicionScreen() {
+fun EditProfileScreen() {
     var isSideMenuOpen by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             HeaderProfile(
                 onBurgerClick = { isSideMenuOpen = !isSideMenuOpen }, // Cambia el estado del SideMenu
-                onSearchClick = { /* Lógica para abrir el Market */ },
+                onSearchClick = { /* Lógica para abrir el Search*/ },
                 username = "Username"
             )
 
-            Exhibicion()
+            EditProfile()
         }
 
         // SideMenu
@@ -48,9 +47,11 @@ fun ExhibicionScreen() {
     }
 }
 
+
+
 @ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
-fun VistaExhibicion() {
-    ExhibicionScreen()
+fun VistaEditProfile() {
+    EditProfileScreen()
 }

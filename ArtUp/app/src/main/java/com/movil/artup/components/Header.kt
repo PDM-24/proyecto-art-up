@@ -42,7 +42,7 @@ import com.movil.artup.R
 @Composable
 fun HeaderProfile(
     onBurgerClick: () -> Unit = {},
-    onMarketClick: () -> Unit = {},
+    onSearchClick: () -> Unit = {},
     username: String
 ) {
     Row(
@@ -56,7 +56,7 @@ fun HeaderProfile(
             modifier = Modifier.size(24.dp)
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.house_solid),
+                painter = painterResource(id = R.drawable.bars_solid),
                 contentDescription = "Open Side Menu"
             )
         }
@@ -70,12 +70,12 @@ fun HeaderProfile(
         )
         Spacer(modifier = Modifier.weight(1f))
         IconButton(
-            onClick = onMarketClick,
+            onClick = onSearchClick,
             modifier = Modifier.size(24.dp)
         ) {
             Icon(
-                painter = painterResource(id = R.drawable.store_solid),
-                contentDescription = "Market"
+                painter = painterResource(id = R.drawable.magnifying_glass_solid),
+                contentDescription = "Search"
             )
         }
     }

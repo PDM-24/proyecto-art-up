@@ -24,7 +24,7 @@ fun ProfileScreen() {
         Column(modifier = Modifier.fillMaxSize()) {
             HeaderProfile(
                 onBurgerClick = { isSideMenuOpen = !isSideMenuOpen }, // Cambia el estado del SideMenu
-                onMarketClick = { /* Lógica para abrir el Market */ },
+                onSearchClick = { /* Lógica para abrir el Market */ },
                 username = "Username"
             )
 
