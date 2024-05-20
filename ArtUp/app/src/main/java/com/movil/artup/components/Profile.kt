@@ -2,8 +2,7 @@ package com.movil.artup.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -20,8 +19,6 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -31,12 +28,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import com.movil.artup.R
 
 
@@ -70,6 +63,7 @@ fun UserProfileScreen(
                         modifier = Modifier
                             .size(60.dp)
                             .clip(CircleShape)
+                            .clickable {navController.navigate("editarperfil")}
                     )
 
                     Spacer(modifier = Modifier.width(16.dp))
@@ -96,7 +90,7 @@ fun UserProfileScreen(
                     Spacer(modifier = Modifier.width(16.dp))
 
                     Button(
-                        onClick = { /* Acción para Exhibición */ },
+                        onClick = { navController.navigate("exhibicion") },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color.White,
                             contentColor = Color.Black
@@ -132,14 +126,7 @@ fun UserProfileScreen(
 
 
 // Datos de muestra para las obras de arte
-data class Artwork(val imageResId: Int)
 
-val artworks = listOf(
-    Artwork(R.drawable.artwork1), // Ajusta la relación de aspecto según sea necesario
-    Artwork(R.drawable.artwork2),
-    Artwork(R.drawable.artwork3),
-    Artwork(R.drawable.artwork4)
-)
 
 
 

@@ -10,15 +10,15 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.movil.artup.components.BottomNavigation
 import com.movil.artup.components.EditProfile
-import com.movil.artup.components.Exhibicion
 import com.movil.artup.components.HeaderProfile
 
 @ExperimentalMaterial3Api
 @Composable
-fun EditProfileScreen() {
+fun EditProfileScreen(navController: NavController
+) {
     var isSideMenuOpen by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -29,7 +29,7 @@ fun EditProfileScreen() {
                 username = "Username"
             )
 
-            EditProfile()
+            EditProfile(navController)
         }
 
         // SideMenu
@@ -49,9 +49,3 @@ fun EditProfileScreen() {
 
 
 
-@ExperimentalMaterial3Api
-@Preview(showBackground = true)
-@Composable
-fun VistaEditProfile() {
-    EditProfileScreen()
-}

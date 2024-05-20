@@ -3,6 +3,7 @@ package com.movil.artup.components
 
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -20,22 +21,24 @@ import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.movil.artup.R
 
 @ExperimentalMaterial3Api
 @Composable
 fun EditProfile(
-    navController: NavController = rememberNavController()
+    navController: NavController
 ) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -65,6 +68,7 @@ fun EditProfile(
                     painter = painterResource(id = R.drawable.circle_plus_solid),
                     contentDescription = "Edit Icon",
                     modifier = Modifier.size(24.dp)
+                    .clickable{/*logica para cambiar foto de perfil*/}
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Image(
@@ -109,9 +113,3 @@ fun EditProfile(
 }
 
 
-@ExperimentalMaterial3Api
-@Preview(showBackground = true)
-@Composable
-fun VistaEdit() {
-    EditProfile()
-}
