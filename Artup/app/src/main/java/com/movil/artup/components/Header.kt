@@ -44,7 +44,8 @@ import com.movil.artup.R
 fun HeaderProfile(
     onBurgerClick: () -> Unit = {},
     onSearchClick: () -> Unit = {},
-    username: String
+    username: String,
+    isVerified: Boolean // Agrega un parámetro para indicar si el usuario está verificado
 ) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -62,13 +63,23 @@ fun HeaderProfile(
             )
         }
         Spacer(modifier = Modifier.width(16.dp))
-        Text(
-            text = username,
-            style = TextStyle(
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                text = username,
+                style = TextStyle(
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 18.sp
+                )
             )
-        )
+            if (isVerified) {
+                Spacer(modifier = Modifier.width(8.dp))
+                Icon(
+                    painter = painterResource(id = R.drawable.building_solid), // Reemplaza con el icono de verificado
+                    contentDescription = "Verified User",
+                    modifier = Modifier.size(16.dp)
+                )
+            }
+        }
         Spacer(modifier = Modifier.weight(1f))
         IconButton(
             onClick = onSearchClick,

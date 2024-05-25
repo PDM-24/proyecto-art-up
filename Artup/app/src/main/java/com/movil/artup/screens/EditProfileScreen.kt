@@ -27,7 +27,8 @@ fun EditProfileScreen(navController: NavController
             HeaderProfile(
                 onBurgerClick = { isSideMenuOpen = !isSideMenuOpen }, // Cambia el estado del SideMenu
                 onSearchClick = { /* Lógica para abrir el Search*/ },
-                username = "Username"
+                username = "Username",
+                isVerified = true
             )
 
             EditProfile(navController)

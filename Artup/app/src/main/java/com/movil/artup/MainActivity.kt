@@ -9,6 +9,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.movil.artup.components.LoginScreen
+import com.movil.artup.components.SignUpInstScreen
+import com.movil.artup.components.SignUpScreen
+import com.movil.artup.components.WelcomeScreen
 import com.movil.artup.screens.EditProfileScreen
 import com.movil.artup.screens.ExhibicionScreen
 import com.movil.artup.screens.ProfileScreen
@@ -26,11 +30,11 @@ class MainActivity : AppCompatActivity() {
 @ExperimentalMaterial3Api
 @Composable
 fun MyApp() {
-    var navController = rememberNavController()
+    val navController = rememberNavController()
 
     NavHost(
         navController = navController,
-        startDestination = "perfil"
+        startDestination = "welcome"
     ) {
         composable("perfil") {
             ProfileScreen(navController)
@@ -40,6 +44,18 @@ fun MyApp() {
         }
         composable("editarperfil"){
             EditProfileScreen(navController)
+        }
+        composable("welcome"){
+            WelcomeScreen(navController)
+        }
+        composable("login"){
+            LoginScreen(navController)
+        }
+        composable("signup"){
+            SignUpScreen(navController)
+        }
+        composable("signupinstitucion"){
+            SignUpInstScreen(navController)
         }
     }
 }

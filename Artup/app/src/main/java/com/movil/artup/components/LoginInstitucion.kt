@@ -1,6 +1,7 @@
 package com.movil.artup.components
 
 
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -31,7 +32,7 @@ import com.movil.artup.R
 
 
 @Composable
-fun LoginScreen(navController: NavController) {
+fun SignUpInstScreen(navController: NavController) {
     val painter = painterResource(id = R.drawable.starry_night)
 
     Box(
@@ -85,6 +86,13 @@ fun LoginScreen(navController: NavController) {
                     )
 
                     OutlinedTextField(
+                        value = "", // Valor del campo de usuario
+                        onValueChange = { /* Actualizar valor del campo */ },
+                        label = { Text(text = "Correo Institucional") },
+                        modifier = Modifier.fillMaxWidth()
+                    )
+
+                    OutlinedTextField(
                         value = "", // Valor del campo de contraseña
                         onValueChange = { /* Actualizar valor del campo */ },
                         label = { Text(text = "Contraseña") },
@@ -107,10 +115,10 @@ fun LoginScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Text(
-                        text = "No tienes cuenta? Registrarse",
+                        text = "Ya tienes cuenta insitucional? Inicia Sesion",
                         color = Color.Blue,
                         fontSize = 16.sp,
-                        modifier = Modifier.clickable { navController.navigate("signup") }
+                        modifier = Modifier.clickable { navController.navigate("login") }
                     )
                 }
             }
