@@ -4,13 +4,16 @@ package com.movil.artup.components
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -73,6 +76,37 @@ fun LoginScreen(navController: NavController) {
                     modifier = Modifier.padding(16.dp),
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+                        Button(
+                            onClick = { navController.navigate("login") },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color(0xFF6200EE),
+                                contentColor = Color.White
+                            ),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(text = "Log in")
+                        }
+
+                        Spacer(modifier = Modifier.width(16.dp))
+
+                        Button(
+                            onClick = { navController.navigate("signup") },
+                            colors = ButtonDefaults.buttonColors(
+                                containerColor = Color.Gray,
+                                contentColor = Color.Black
+                            ),
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Text(text = "Sign Up")
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
                     Text(text = "Bienvenido a Art-up")
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -94,24 +128,25 @@ fun LoginScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Button(
-                        onClick = { /* Acción de inicio de sesión */ },
+                        onClick = { navController.navigate("perfil")  },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF6200EE),
                             contentColor = Color.White
                         ),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(text = "Log in")
+                        Text(text = "Login")
                     }
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    Text(
-                        text = "No tienes cuenta? Registrarse",
-                        color = Color.Blue,
-                        fontSize = 16.sp,
-                        modifier = Modifier.clickable { navController.navigate("signup") }
+                    Text(text = "No tienes una cuenta?",
+                        modifier = Modifier.clickable {
+                            // Acción a realizar cuando se hace clic en "Ya tienes una cuenta?"
+                            navController.navigate("signup") // Por ejemplo, navegar a la pantalla de inicio de sesión
+                        }
                     )
+
                 }
             }
         }
