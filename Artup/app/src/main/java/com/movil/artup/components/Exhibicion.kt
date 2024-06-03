@@ -29,7 +29,8 @@ import com.movil.artup.R
 
 @Composable
 fun Exhibicion(
-    navController: NavController
+    navController: NavController,
+    onArtworkClick: (Int) -> Unit // Añadido aquí
 ) {
     Scaffold { innerPadding ->
         Column(
@@ -105,6 +106,7 @@ fun Exhibicion(
                             modifier = Modifier
                                 .size(100.dp)
                                 .padding(4.dp)
+                                .clickable { onArtworkClick(artwork.imageResId) } // Añadido aquí
                         )
                     }
                 }
@@ -118,27 +120,16 @@ fun Exhibicion(
                 )
 
                 Row {
-                    Image(
-                        painter = painterResource(id = R.drawable.artwork3),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .padding(4.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.artwork2),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .padding(4.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.starry_night),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .padding(4.dp)
-                    )
+                    for (artwork in artworks) {
+                        Image(
+                            painter = painterResource(id = artwork.imageResId),
+                            contentDescription = null,
+                            modifier = Modifier
+                                .size(100.dp)
+                                .padding(4.dp)
+                                .clickable { onArtworkClick(artwork.imageResId) } // Añadido aquí
+                        )
+                    }
                 }
             }
         }

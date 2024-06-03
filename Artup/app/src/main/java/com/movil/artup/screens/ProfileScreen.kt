@@ -15,6 +15,8 @@ import androidx.navigation.compose.rememberNavController
 import com.movil.artup.components.HeaderProfile
 import com.movil.artup.components.SideMenu
 import com.movil.artup.components.UserProfileScreen
+import com.movil.artup.data.Artwork
+import com.movil.artup.data.artworks
 
 @Composable
 fun ProfileScreen(navController: NavController) {
@@ -32,7 +34,9 @@ fun ProfileScreen(navController: NavController) {
                 navController = navController,
                 onSearchClick = { /* Lógica de búsqueda */ },
                 onFilterClick = { /* Lógica de filtro */ },
-                onArtworkClick = { /* Lógica de la obra de arte */ }
+                onArtworkClick = { artworkId ->
+                    navController.navigate("artworkDetail/$artworkId")
+                }
             )
         }
 

@@ -1,13 +1,14 @@
 package com.movil.artup.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
@@ -31,7 +32,9 @@ fun FilteredExhibicionScreen(navController: NavController, filterType: String) {
                 username = "Username"
             )
 
-            FilteredExhibicion(navController = navController, filterType = filterType)
+            FilteredExhibicion(navController = navController, filterType = filterType, onArtworkClick = { artworkId ->
+                navController.navigate("artworkDetail/$artworkId")
+            })
         }
 
         if (isSideMenuOpen) {

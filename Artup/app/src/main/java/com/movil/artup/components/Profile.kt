@@ -1,19 +1,10 @@
+// src/main/kotlin/com/movil/artup/components/UserProfileScreen.kt
 package com.movil.artup.components
-
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
@@ -32,14 +23,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.movil.artup.R
-
+import com.movil.artup.data.artworks
+import com.movil.artup.data.Artwork
 
 @Composable
 fun UserProfileScreen(
     navController: NavController,
     onSearchClick: () -> Unit = {},
     onFilterClick: () -> Unit = {},
-    onArtworkClick: () -> Unit = {}
+    onArtworkClick: (Int) -> Unit // Aquí cambiamos el tipo de parámetro
 ) {
     Scaffold(
         // Eliminamos el parámetro topBar
@@ -64,7 +56,7 @@ fun UserProfileScreen(
                         modifier = Modifier
                             .size(60.dp)
                             .clip(CircleShape)
-                            .clickable {navController.navigate("editarperfil")}
+                            .clickable { navController.navigate("editarperfil") }
                     )
 
                     Spacer(modifier = Modifier.width(16.dp))
@@ -104,7 +96,7 @@ fun UserProfileScreen(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 LazyVerticalStaggeredGrid(
-                    StaggeredGridCells.Fixed(2),
+                    columns = StaggeredGridCells.Fixed(2),
                     modifier = Modifier.fillMaxWidth(),
                     contentPadding = PaddingValues(horizontal = 8.dp, vertical = 8.dp),
                     content = {
@@ -113,7 +105,8 @@ fun UserProfileScreen(
                                 painter = painterResource(id = artwork.imageResId),
                                 contentDescription = null,
                                 modifier = Modifier
-                                    .padding(2.dp),
+                                    .padding(2.dp)
+                                    .clickable { onArtworkClick(artwork.imageResId) }, // Aquí pasamos el artworkId al callback
                                 contentScale = ContentScale.Crop
                             )
                         }
@@ -123,9 +116,3 @@ fun UserProfileScreen(
         }
     }
 }
-
-
-
-// Datos de muestra para las obras de arte
-
-

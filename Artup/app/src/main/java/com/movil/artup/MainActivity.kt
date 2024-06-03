@@ -1,5 +1,3 @@
-package com.movil.artup
-
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
+import com.movil.artup.screens.ArtworkDetailScreen // Importa ArtworkDetailScreen aquí
 import com.movil.artup.screens.EditProfileScreen
 import com.movil.artup.screens.ExhibicionScreen
 import com.movil.artup.screens.FilteredExhibicionScreen
@@ -50,6 +49,13 @@ fun MyApp() {
         ) { backStackEntry ->
             val filterType = backStackEntry.arguments?.getString("filterType") ?: "unknown"
             FilteredExhibicionScreen(navController, filterType)
+        }
+        composable( // Agrega una nueva ruta para ArtworkDetailScreen
+            "artworkDetail/{artworkId}",
+            arguments = listOf(navArgument("artworkId") { type = NavType.IntType })
+        ) { backStackEntry ->
+            val artworkId = backStackEntry.arguments?.getInt("artworkId") ?: -1
+            ArtworkDetailScreen(navController, artworkId)
         }
     }
 }

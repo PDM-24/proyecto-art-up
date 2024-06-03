@@ -24,7 +24,11 @@ import androidx.navigation.NavController
 import com.movil.artup.R
 
 @Composable
-fun FilteredExhibicion(navController: NavController, filterType: String) {
+fun FilteredExhibicion(
+    navController: NavController,
+    filterType: String,
+    onArtworkClick: (Int) -> Unit // Añadido aquí
+) {
     Scaffold { innerPadding ->
         Column(
             modifier = Modifier
@@ -115,6 +119,7 @@ fun FilteredExhibicion(navController: NavController, filterType: String) {
                             modifier = Modifier
                                 .size(200.dp)
                                 .padding(8.dp)
+                                .clickable { onArtworkClick(artwork.imageResId) } // Añadido aquí
                         )
                     }
                 }
