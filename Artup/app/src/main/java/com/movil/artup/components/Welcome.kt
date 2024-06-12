@@ -25,6 +25,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.movil.artup.R
 
 
@@ -97,6 +98,12 @@ fun WelcomeScreen(navController: NavController) {
             )
         }
     }
+}
+
+@Composable
+@Preview(showBackground = true)
+fun WelcomeScreenPreview() {
+    WelcomeScreen(navController = rememberNavController())
 }
 
 

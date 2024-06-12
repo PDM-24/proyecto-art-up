@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
 import com.movil.artup.components.BottomNavigation
 import com.movil.artup.components.Exhibicion
@@ -38,7 +39,7 @@ fun ExhibicionScreen(navController: NavController) {
         BottomNavigation(
             onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
             onAddClick = { /* Lógica de navegación para agregar algo */ },
-            onCameraClick = { /* Lógica de navegación para abrir la cámara */ }
+            onMarketClick = { /* Lógica de navegación para abrir la cámara */ }
         )
     }
 
@@ -53,12 +54,10 @@ fun ExhibicionScreen(navController: NavController) {
             )
         }
 
-
-
-
-
         // BottomNavigation
 
     }
+
+
 
 

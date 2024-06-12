@@ -1,8 +1,6 @@
 package com.movil.artup.components
 
-
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -19,51 +17,47 @@ import com.movil.artup.R
 fun BottomNavigation(
     onHomeClick: () -> Unit = {},
     onAddClick: () -> Unit = {},
-    onCameraClick: () -> Unit = {}
+    onMarketClick: () -> Unit = {}
 ) {
-    Box(
-        modifier = Modifier.fillMaxSize(), // Ocupa todo el espacio disponible
-        contentAlignment = Alignment.BottomCenter // Alinea el contenido en la parte inferior del Box
-    ) {
-        BottomAppBar(
-            containerColor = Color.Black.copy(alpha = 0.8f),
-            content = {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp),
-                    horizontalArrangement = Arrangement.SpaceAround,
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    IconButton(onClick = onHomeClick) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.house_solid),
-                            contentDescription = "Home",
-                            tint = Color.White,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
-                    IconButton(onClick = onAddClick) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.circle_plus_solid),
-                            contentDescription = "Add",
-                            tint = Color.White,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
-                    IconButton(onClick = onCameraClick) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.store_solid),
-                            contentDescription = "Camera",
-                            tint = Color.White,
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
+    BottomAppBar(
+        containerColor = Color.Black.copy(alpha = 0.8f),
+        content = {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                horizontalArrangement = Arrangement.SpaceAround,
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                IconButton(onClick = onHomeClick) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.house_solid),
+                        contentDescription = "Home",
+                        tint = Color.White,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+                IconButton(onClick = onAddClick) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.circle_plus_solid),
+                        contentDescription = "Add",
+                        tint = Color.White,
+                        modifier = Modifier.size(24.dp)
+                    )
+                }
+                IconButton(onClick = onMarketClick) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.store_solid),
+                        contentDescription = "Camera",
+                        tint = Color.White,
+                        modifier = Modifier.size(24.dp)
+                    )
                 }
             }
-        )
-    }
+        }
+    )
 }
+
 @Preview(showBackground = false)
 @Composable
 fun BottomNavigationPreview() {
