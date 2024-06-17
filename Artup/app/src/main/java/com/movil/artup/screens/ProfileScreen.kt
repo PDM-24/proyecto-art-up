@@ -11,6 +11,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.movil.artup.components.BottomNavigation
 import com.movil.artup.components.HeaderProfile
 import com.movil.artup.components.SideMenu
@@ -40,7 +41,7 @@ fun ProfileScreen(navController: NavController) {
             BottomNavigation(
                 onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
                 onAddClick = { /* Lógica de navegación para agregar algo */ },
-                onCameraClick = { /* Lógica de navegación para abrir la cámara */ }
+                onMarketClick = { /* Lógica de navegación para abrir la cámara */ }
             )
         }
 
@@ -62,5 +63,6 @@ fun ProfileScreen(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun VistaProfile() {
-
+    val navController = rememberNavController()
+    ProfileScreen(navController)
 }

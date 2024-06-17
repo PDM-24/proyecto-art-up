@@ -1,6 +1,5 @@
 package com.movil.artup.components
 
-
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
@@ -20,9 +19,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun SideMenu(
@@ -87,5 +87,15 @@ private fun MenuItem(text: String, navController: NavController, route: String) 
     }
 }
 
-
+@Preview(showBackground = true)
+@Composable
+fun SideMenuPreview() {
+    val navController = rememberNavController()
+    SideMenu(
+        isSideMenuOpen = true,
+        navController = navController,
+        onCloseSession = { /* TODO */ },
+        onMenuClose = { /* TODO */ }
+    )
+}
 

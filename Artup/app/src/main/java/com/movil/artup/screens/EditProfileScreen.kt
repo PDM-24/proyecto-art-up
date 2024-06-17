@@ -11,7 +11,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.movil.artup.components.BottomNavigation
 import com.movil.artup.components.EditProfile
 import com.movil.artup.components.HeaderProfile
@@ -44,9 +46,17 @@ fun EditProfileScreen(navController: NavController
         BottomNavigation(
             onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
             onAddClick = { /* Lógica de navegación para agregar algo */ },
-            onCameraClick = { /* Lógica de navegación para abrir la cámara */ }
+            onMarketClick = { /* Lógica de navegación para abrir la cámara */ }
         )
     }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+@Preview(showBackground = true)
+fun PreviewEditProfile (){
+    val navController = rememberNavController()
+    EditProfileScreen(navController)
 }
 
 
