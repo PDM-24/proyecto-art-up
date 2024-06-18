@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1043175033408",
+    "project_id": "artup-954f7",
+    "storage_bucket": "artup-954f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043175033408:android:7ce17eeab1667c60a96da5",
+        "android_client_info": {
+          "package_name": "com.movil.artup"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043175033408-fer8mruilshrat2rseui27h6m58rr0hi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.movil.artup",
+            "certificate_hash": "f1fa58bcc15e6579a1122fa672de752f9b9a8be6"
+          }
+        },
+        {
+          "client_id": "1043175033408-8437errdombsjq27174c5h4d6cl865gp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAaZh5s0GezozQDkNU6f9E3RKfK_nS6qVw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043175033408-8437errdombsjq27174c5h4d6cl865gp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
