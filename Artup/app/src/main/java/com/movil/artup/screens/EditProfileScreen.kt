@@ -25,8 +25,8 @@ fun EditProfileScreen(navController: NavController
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             HeaderProfile(
-                onBurgerClick = { isSideMenuOpen = !isSideMenuOpen }, // Cambia el estado del SideMenu
-                onSearchClick = { /* Lógica para abrir el Search*/ },
+                navController = navController,
+                onBurgerClick = { isSideMenuOpen = !isSideMenuOpen },
                 username = "Username"
             )
 

@@ -1,6 +1,5 @@
 package com.movil.artup.screens
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,8 +26,8 @@ fun FilteredExhibicionScreen(navController: NavController, filterType: String) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             HeaderProfile(
+                navController = navController,
                 onBurgerClick = { isSideMenuOpen = !isSideMenuOpen },
-                onSearchClick = { /* Lógica para abrir el Market */ },
                 username = "Username"
             )
 

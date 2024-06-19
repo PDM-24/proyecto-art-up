@@ -14,6 +14,7 @@ import com.movil.artup.screens.EditProfileScreen
 import com.movil.artup.screens.ExhibicionScreen
 import com.movil.artup.screens.FilteredExhibicionScreen
 import com.movil.artup.screens.ProfileScreen
+import com.movil.artup.screens.SearchScreen
 
 @ExperimentalMaterial3Api
 class MainActivity : AppCompatActivity() {
@@ -57,8 +58,10 @@ fun MyApp() {
             val artworkId = backStackEntry.arguments?.getInt("artworkId") ?: -1
             ArtworkDetailScreen(navController, artworkId)
         }
+        composable("search") {
+            SearchScreen(navController)
     }
-}
+}}
 
 @ExperimentalMaterial3Api
 @Preview(showBackground = true)

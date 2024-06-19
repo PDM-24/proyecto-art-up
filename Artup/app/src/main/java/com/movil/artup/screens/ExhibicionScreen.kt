@@ -1,6 +1,5 @@
 package com.movil.artup.screens
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -27,8 +26,8 @@ fun ExhibicionScreen(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize()) {
         Column(modifier = Modifier.fillMaxSize()) {
             HeaderProfile(
-                onBurgerClick = { isSideMenuOpen = !isSideMenuOpen }, // Cambia el estado del SideMenu
-                onSearchClick = { /* Lógica para abrir el Market */ },
+                navController = navController,
+                onBurgerClick = { isSideMenuOpen = !isSideMenuOpen },
                 username = "Username"
             )
 
