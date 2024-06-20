@@ -25,19 +25,20 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            Navigation()
+            Navigation(this)
         }
     }
 }
 
 
 
-
+/*
 
 @SuppressLint("NewApi")
 @ExperimentalMaterial3Api
 @Preview(showBackground = true)
 @Composable
 fun Appp() {
-    Navigation()
+    Navigation(this)
 }
+*/
