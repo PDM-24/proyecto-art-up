@@ -28,20 +28,31 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.google.android.gms.auth.api.identity.Identity
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
+import com.movil.artup.Login.LoginViewModel
 import com.movil.artup.R
+import com.movil.artup.navigation.ScreenRoute
 
 @ExperimentalMaterial3Api
 @Composable
 fun EditProfile(
-    navController: NavController
+    navController: NavController,
+    viewModel: LoginViewModel =androidx.lifecycle.viewmodel.compose.viewModel()
 ) {
     var username by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
     var avatarResId by remember { mutableStateOf(R.drawable.artwork3) }
+    val context = LocalContext.current
+    val signInClient = Identity.getSignInClient(context)
+    val auth: FirebaseAuth by lazy { Firebase.auth }
 
     Scaffold(
         topBar = {
@@ -106,6 +117,19 @@ fun EditProfile(
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             ) {
                 Text("Actualizar")
+            }
+            Spacer(modifier = Modifier.height(8.dp))
+
+            Button(
+                onClick = {
+                    auth.signOut()
+                    signInClient.signOut()
+                    navController.navigate(ScreenRoute.WelcomeScreen.route)
+
+                },
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
+                Text("Cerrar sesion")
             }
         }
     }

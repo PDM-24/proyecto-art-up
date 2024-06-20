@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services")
+
 }
 
 android {
@@ -48,6 +50,14 @@ android {
 
 dependencies {
 
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+
+
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -58,6 +68,9 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.compose)
+   // implementation(libs.firebase.auth.common)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.benchmark.macro)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
