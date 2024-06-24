@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
@@ -8,6 +10,7 @@ plugins {
 android {
     namespace = "com.movil.artup"
     compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.movil.artup"
@@ -46,6 +49,7 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
@@ -74,6 +78,8 @@ implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
    // implementation(libs.firebase.auth.common)
     implementation(libs.firebase.auth.ktx)
     implementation(libs.androidx.benchmark.macro)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
