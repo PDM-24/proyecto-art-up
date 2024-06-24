@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const Institution = require('../models/Institution');
+const Institution = require('../models/institucion');
 
 // Obtener todas las instituciones
 router.get('/', async (req, res) => {
