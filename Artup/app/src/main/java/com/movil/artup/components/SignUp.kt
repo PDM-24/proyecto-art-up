@@ -137,7 +137,7 @@ fun SignUpScreen(navController: NavController) {
                     Spacer(modifier = Modifier.height(16.dp))
 
                     Button(
-                        onClick = { /* Acción de registro */ },
+                        onClick = { navController.navigate("perfil")  },
                         colors = ButtonDefaults.buttonColors(
                             containerColor = Color(0xFF6200EE),
                             contentColor = Color.White
