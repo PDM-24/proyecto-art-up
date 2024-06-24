@@ -54,6 +54,9 @@ dependencies {
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
 implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation ("androidx.room:room-runtime:2.4.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
 
     implementation("com.google.android.gms:play-services-auth:21.2.0")
@@ -80,3 +83,5 @@ implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation ("com.google.accompanist:accompanist-insets:0.23.1")
 }
+
+
