@@ -1,11 +1,16 @@
+import org.jetbrains.kotlin.storage.CacheResetOnProcessCanceled.enabled
+
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services")
+
 }
 
 android {
     namespace = "com.movil.artup"
     compileSdk = 34
+
 
     defaultConfig {
         applicationId = "com.movil.artup"
@@ -44,9 +49,21 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
 }
 
 dependencies {
+
+    //Firebase
+    implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
+implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
+    implementation("com.google.firebase:firebase-firestore-ktx")
+    implementation ("androidx.room:room-runtime:2.4.0")
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+
+
+    implementation("com.google.android.gms:play-services-auth:21.2.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -58,6 +75,11 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.androidx.appcompat)
     implementation(libs.androidx.navigation.compose)
+   // implementation(libs.firebase.auth.common)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.benchmark.macro)
+    implementation(libs.androidx.lifecycle.livedata.ktx)
+    implementation(libs.androidx.recyclerview)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,3 +89,5 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
     implementation ("com.google.accompanist:accompanist-insets:0.23.1")
 }
+
+
