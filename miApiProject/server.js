@@ -9,16 +9,16 @@ const port = 3000;
 app.use(bodyParser.json());
 
 // Conexión a MongoDB
-mongoose.connect('mongodb://localhost:27017/mydatabase', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect('mongodb+srv://root:root@cluster0.dmjlraw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log('MongoDB connected'))
     .catch(err => console.log(err));
 
 // Importar rutas
-const institutionRoutes = require('./routes/institutionRoutes');
-const eventRoutes = require('./routes/eventRoutes');
-const postRoutes = require('./routes/postRoutes');
-const userRoutes = require('./routes/userRoutes');
-const saleRoutes = require('./routes/saleRoutes');
+const institutionRoutes = require('./routes/institutionroutes');
+const eventRoutes = require('./routes/eventroutes');
+const postRoutes = require('./routes/postroutes');
+const userRoutes = require('./routes/userroutes');
+const saleRoutes = require('./routes/saleroutes');
 
 // Usar rutas
 app.use('/institutions', institutionRoutes);

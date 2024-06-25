@@ -44,9 +44,9 @@ fun EditProfileScreen(navController: NavController
 
         // BottomNavigation
         BottomNavigation(
-            onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
-            onAddClick = { /* Lógica de navegación para agregar algo */ },
-            onMarketClick = { /* Lógica de navegación para abrir la cámara */ }
+            onHomeClick = { navController.navigate("perfil") },
+            onAddClick = { navController.navigate("sell") },
+            onMarketClick = { navController.navigate("market") }
         )
     }
 }

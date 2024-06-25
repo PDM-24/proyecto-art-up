@@ -18,15 +18,17 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.movil.artup.R
 import com.movil.artup.components.BottomNavigation
 import com.movil.artup.components.SideMenu
+import com.movil.artup.data.viewmodel.UserViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun EditEventScreen(navController: NavController) {
+fun EditEventScreen(navController: NavController, userViewModel: UserViewModel = viewModel()) {
     var isSideMenuOpen by remember { mutableStateOf(false) }
     val drawerState = rememberDrawerState(DrawerValue.Closed)
 
@@ -54,9 +56,15 @@ fun EditEventScreen(navController: NavController) {
             },
             bottomBar = {
                 BottomNavigation(
-                    onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
-                    onAddClick = { /* Lógica de navegación para agregar algo */ },
-                    onMarketClick = { /* Lógica de navegación para ir al mercado */ }
+                    onHomeClick = { navController.navigate("perfil") },
+                    onAddClick = {
+                        /*if (userViewModel.isInstitution) {
+                            navController.navigate("editEvent")
+                        } else {
+                            navController.navigate("sell")
+                        }*/
+                    }, // Suponiendo que tienes una ruta "add"
+                    onMarketClick = { navController.navigate("market") }
                 )
             }
         ) { innerPadding ->
@@ -88,8 +96,8 @@ fun TopAppBarWithBackground(title: String, backgroundImage: Int, onMenuClick: ()
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center) {
                     Text(title)
-                    }
-                },
+                }
+            },
             navigationIcon = {
                 IconButton(onClick = onMenuClick) {
                     Icon(imageVector = Icons.Default.Menu, contentDescription = "Menu", tint = Color.White)
@@ -200,5 +208,4 @@ fun PreviewEditEvent() {
     val navController = rememberNavController()
     EditEventScreen(navController)
 }
-
 

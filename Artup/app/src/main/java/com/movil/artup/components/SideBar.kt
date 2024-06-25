@@ -50,7 +50,7 @@ fun SideMenu(
                 Column(
                     modifier = Modifier.padding(16.dp)
                 ) {
-                    MenuItem(text = "Home", navController = navController, route = "home")
+                    MenuItem(text = "Home", navController = navController, route = "perfil")
                     MenuItem(text = "Profile", navController = navController, route = "perfil")
                     MenuItem(text = "Artists", navController = navController, route = "artists")
                     MenuItem(text = "Market", navController = navController, route = "market")
