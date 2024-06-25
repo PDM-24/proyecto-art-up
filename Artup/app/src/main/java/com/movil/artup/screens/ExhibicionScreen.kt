@@ -13,6 +13,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavController
+import com.movil.artup.Publication
 import com.movil.artup.components.BottomNavigation
 import com.movil.artup.components.Exhibicion
 import com.movil.artup.components.HeaderProfile
@@ -20,7 +21,7 @@ import com.movil.artup.components.SideMenu
 
 @ExperimentalMaterial3Api
 @Composable
-fun ExhibicionScreen(navController: NavController) {
+fun ExhibicionScreen(navController: NavController/*, publications: List<Publication>*/) {
     var isSideMenuOpen by remember { mutableStateOf(false) }
 
     Box(modifier = Modifier.fillMaxSize()) {
@@ -34,29 +35,26 @@ fun ExhibicionScreen(navController: NavController) {
                 isVerified = true
             )
 
-            Exhibicion(navController = navController)
+            Exhibicion(navController = navController/*, publications = publications*/)
         }
         BottomNavigation(
-            onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
-            onAddClick = { /* Lógica de navegación para agregar algo */ },
-            onMarketClick = { /* Lógica de navegación para abrir la cámara */ }
+            onHomeClick = { navController.navigate("perfil") },
+            onAddClick = { navController.navigate("sell") },
+            onMarketClick = { navController.navigate("market") }
         )
     }
 
         // SideMenu
 
-        if (isSideMenuOpen) {
-            SideMenu(
-                isSideMenuOpen = isSideMenuOpen,
-                navController = navController,
-                onCloseSession = { /* Lógica para cerrar sesión */ },
-                onMenuClose = { isSideMenuOpen = false }
-            )
-        }
-
-        // BottomNavigation
-
+    if (isSideMenuOpen) {
+        SideMenu(
+            isSideMenuOpen = isSideMenuOpen,
+            navController = navController,
+            onCloseSession = { /* Lógica para cerrar sesión */ },
+            onMenuClose = { isSideMenuOpen = false }
+        )
     }
+}
 
 
 

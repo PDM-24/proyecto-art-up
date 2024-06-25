@@ -76,9 +76,9 @@ fun EventScreen(navController: NavController) {
             },
             bottomBar = {
                 BottomNavigation(
-                    onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
-                    onAddClick = { /* Lógica de navegación para agregar algo */ },
-                    onMarketClick = { /* Lógica de navegación para ir al mercado */ }
+                    onHomeClick = { navController.navigate("perfil") },
+                    onAddClick = { navController.navigate("sell") },
+                    onMarketClick = { navController.navigate("market") }
                 )
             },
             content = { paddingValues ->

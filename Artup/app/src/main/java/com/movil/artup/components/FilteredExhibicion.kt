@@ -1,17 +1,11 @@
 package com.movil.artup.components
 
-
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -25,14 +19,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.movil.artup.Publication
 import com.movil.artup.R
 
-
 @Composable
-fun Exhibicion(
-    navController: NavController/*, publications: List<Publication>*/
+fun FilteredExhibicion(
+    navController: NavController,
+    filterType: String,
+    onArtworkClick: (Int) -> Unit // Añadido aquí
 ) {
     Scaffold { innerPadding ->
         Column(
@@ -94,61 +89,50 @@ fun Exhibicion(
 
                 Spacer(modifier = Modifier.height(16.dp))
 
-                Text(text = "Human", fontWeight = FontWeight.Bold)
+                val title = when (filterType) {
+                    "human" -> "Human"
+                    "car" -> "Carros"
+                    else -> "Exhibición"
+                }
 
-                Row {
-                    for (artwork in artworks) {
+                Text(
+                    text = title,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 24.sp,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(8.dp)
+                        .wrapContentWidth(Alignment.CenterHorizontally)
+                )
+
+                val filteredArtworks = when (filterType) {
+                    "human" -> artworks.filter { it.imageResId == R.drawable.artwork1 || it.imageResId == R.drawable.artwork2 }
+                    "car" -> artworks.filter { it.imageResId == R.drawable.artwork3 || it.imageResId == R.drawable.artwork4 }
+                    else -> artworks
+                }
+
+                LazyColumn {
+                    items(filteredArtworks) { artwork ->
                         Image(
                             painter = painterResource(id = artwork.imageResId),
                             contentDescription = null,
                             modifier = Modifier
-                                .size(100.dp)
-                                .padding(4.dp)
+                                .size(200.dp)
+                                .padding(8.dp)
+                                .clickable { onArtworkClick(artwork.imageResId) } // Añadido aquí
                         )
                     }
-                }
-
-                Spacer(modifier = Modifier.height(16.dp))
-
-                Text(text = "Carros", fontWeight = FontWeight.Bold)
-
-                Row {
-                    Image(
-                        painter = painterResource(id = R.drawable.artwork3),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .padding(4.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.artwork2),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .padding(4.dp)
-                    )
-                    Image(
-                        painter = painterResource(id = R.drawable.starry_night),
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(100.dp)
-                            .padding(4.dp)
-                    )
                 }
             }
         }
     }
 }
 
-// Datos de muestra para las obras de arte
+data class Artworkk(val imageResId: Int)
 
-
-data class Artwork(val imageResId: Int)
-
-val artworks = listOf(
-    Artwork(R.drawable.artwork1), // Ajusta la relación de aspecto según sea necesario
+val artwork = listOf(
+    Artwork(R.drawable.artwork1),
     Artwork(R.drawable.artwork2),
     Artwork(R.drawable.artwork3),
     Artwork(R.drawable.artwork4)
 )
-

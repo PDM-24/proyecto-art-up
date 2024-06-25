@@ -56,15 +56,17 @@ dependencies {
 
     //Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.1.0"))
-implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
+    implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     implementation("com.google.firebase:firebase-firestore-ktx")
     implementation ("androidx.room:room-runtime:2.4.0")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-
-
+    implementation ("com.squareup.okhttp3:logging-interceptor:4.9.1")
+    // Only include one version of material3
+    implementation("androidx.compose.material3:material3:1.2.1")
+    implementation("androidx.compose.runtime:runtime-livedata:1.3.0")
+    implementation("io.coil-kt:coil-compose:2.0.0")
     implementation("com.google.android.gms:play-services-auth:21.2.0")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -87,7 +89,6 @@ implementation("com.google.firebase:firebase-auth-ktx:23.0.0")
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation ("com.google.accompanist:accompanist-insets:0.23.1")
 }
 
 

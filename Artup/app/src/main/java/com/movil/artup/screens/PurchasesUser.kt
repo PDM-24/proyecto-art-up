@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import coil.compose.rememberAsyncImagePainter
 import com.movil.artup.Publication
 import com.movil.artup.R
 import com.movil.artup.components.BottomNavigation
@@ -67,9 +68,9 @@ fun PurchasesScreen(navController: NavController, publications: List<Publication
             },
             bottomBar = {
                 BottomNavigation(
-                    onHomeClick = { /* Lógica de navegación para ir a la pantalla de inicio */ },
-                    onAddClick = { /* Lógica de navegación para agregar algo */ },
-                    onMarketClick = { /* Lógica de navegación para ir al mercado */ }
+                    onHomeClick = { navController.navigate("perfil") },
+                    onAddClick = { navController.navigate("add") }, // Suponiendo que tienes una ruta "add"
+                    onMarketClick = { navController.navigate("market") }
                 )
             },
             content = { padding ->
@@ -119,7 +120,7 @@ fun PublicationItem(publication: Publication) {
     ) {
         Text(text = publication.username, fontSize = 12.sp, modifier = Modifier.fillMaxWidth())
         Image(
-            painter = painterResource(id = publication.imageRes),
+            painter = rememberAsyncImagePainter(model = publication.imageRes),
             contentDescription = null,
             modifier = Modifier
                 .height(150.dp)
@@ -167,20 +168,4 @@ fun BottomNavigationBar(onHomeClick: () -> Unit, onAddClick: () -> Unit, onMarke
     }
 }
 
-@ExperimentalMaterial3Api
-@Composable
-@Preview(showBackground = true)
-fun PurchasesScreenPreview() {
-    val navController = rememberNavController()
-    val publications = listOf(
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125"),
-        Publication("melanyytgs", R.drawable.sample_image, "$125")
-    )
-    PurchasesScreen(navController, publications)
-}
+
